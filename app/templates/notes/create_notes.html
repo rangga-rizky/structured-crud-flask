@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% from "forms/macros.html" import render_field %}
+<div class="container">
+    <div class="card">
+        <strong><p>Create new Note</p></strong>
+        <form method="POST" action="."  class="form-signin">
+            {{ form.csrf_token }}
+            {{ render_field(form.title, class="form-control") }}
+            {{ render_field(form.body, class="form-control") }}
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Create</button>
+        </form><!-- /form -->
+    </div><!-- /card-container -->
+</div><!-- /container -->
+{% endblock %}
+

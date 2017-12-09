@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% from "forms/macros.html" import render_field %}
+<div class="container">
+    <div class="card">
+        <strong><p>Edit Note</p></strong>
+        <form method="POST" action="{{url_for('notes.update')}}"  class="form-signin">
+            {{ form.csrf_token }}
+            {{ render_field(form.title, class="form-control",value=note.title) }}
+            {{ render_field(form.body, class="form-control",value=note.body) }}
+            <input type="hidden" name="id" value="{{note.id}}">
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Update</button>
+        </form><!-- /form -->
+    </div><!-- /card-container -->
+</div><!-- /container -->
+{% endblock %}
+

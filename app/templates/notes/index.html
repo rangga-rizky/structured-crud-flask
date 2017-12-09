@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<div class="card">
+
+	<a href="{{ url_for('notes.create') }}">Create</a>	
+	<br>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Title</th>
+				<th>Body</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for note in notes %}
+        	<tr>
+        		<td>{{ note.id }}</td>
+        		<td>{{ note.title }}</td>
+        		<td>{{ note.body }}</td>
+        		<td>
+        			<form method="POST" action="{{url_for('notes.delete')}}"  class="form-signin">
+        				<input type="hidden" name="id" value="{{ note.id }}">
+        				<button class="btn btn-danger" style="width:80">Delete</button>
+        			</form>
+        			<a class="btn btn-primary" href="{{url_for('notes.edit')}}?id={{note.id}}">Edit</a>
+        		</td>
+        	</tr>
+  		 {% endfor %}	
+		</tbody>
+	</table>
+	</div>
+</div>
+
+{% endblock %}
